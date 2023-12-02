@@ -10,7 +10,7 @@ with open("input.txt") as f:
 
 @dataclass
 class Match:
-    pos: int
+    pos: int | float
     value: str | None = None
     value_literal: str | None = None
 
@@ -36,7 +36,7 @@ def replace_in_line(line: str, reverse: bool = False) -> str:
         i = line.find(k)
         if i != -1 and i < match.pos and i < first_digit_index:
             match = Match(i, v, k)
-    if match.value:
+    if match.value and match.value_literal:
         line = line.replace(match.value_literal, match.value, 1)
     return line
 
