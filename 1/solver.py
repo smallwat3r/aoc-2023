@@ -22,11 +22,16 @@ numeric_map = (
 
 def replace_in_line(line: str, reverse: bool = False) -> str:
     match = Match(math.inf)
+    first_digit_index = math.inf
+    for i, ele in enumerate(line):
+        if ele.isdigit():
+            first_digit_index = i
+            break
     for k, v in numeric_map:
         if reverse:
             k = k[::-1]
         i = line.find(k)
-        if i != -1 and i < match.pos:
+        if i != -1 and i < match.pos and i < first_digit_index:
             match = Match(i, v, k)
     if match.value:
         line = line.replace(match.value_literal, match.value, 1)
@@ -55,7 +60,7 @@ class Solution:
         return int(f"{self.first}{self.last}")
 
 
-def solver() -> int:
+def solver(data: str) -> int:
     total = 0
     for line in data:
         line = clean_up_line(line)
@@ -75,4 +80,6 @@ def solver() -> int:
         total += solution.to_digit()
     return total
 
-print(solver())
+
+if __name__ == "__main__":
+    print(solver(data))
