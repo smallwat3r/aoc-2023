@@ -20,6 +20,7 @@ numeric_map = (
 )
 
 
+# this is probably overly complex!
 def replace_in_line(line: str, reverse: bool = False) -> str:
     match = Match(math.inf)
     first_digit_index = math.inf
