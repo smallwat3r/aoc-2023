@@ -63,7 +63,7 @@ class Solution:
         return int(f"{self.first}{self.last}")
 
 
-def solver(data: str) -> int:
+def solver(data: list[str]) -> int:
     total = 0
     for line in data:
         line = clean_up_line(line)
