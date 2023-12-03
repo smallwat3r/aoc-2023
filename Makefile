@@ -15,9 +15,13 @@ $(VENV_PYTHON):
 	$(SYSTEM_PYTHON) -m venv $(VENV)
 
 .PHONY: venv
-venv: $(VENV_PYTHON)  ## Create a Python virtual environment
+venv: $(VENV_PYTHON)  ## Create a Python venv
 
 .PHONY: deps
-deps:  ## Install Python requirements in virtual environment
+deps:  ## Install deps in venv
 	$(PYTHON) -m pip install --upgrade pip
 	$(PYTHON) -m pip install --no-cache-dir -r requirements.txt
+
+.PHONY: fmt
+fmt:  ## Format code
+	$(PYTHON) -m yapf --recursive --exclude '.venv' --in-place .

@@ -3,7 +3,6 @@
 import math
 from dataclasses import dataclass
 
-
 with open("input.txt") as f:
     data = f.readlines()
 
@@ -15,11 +14,9 @@ class Match:
     value_literal: str | None = None
 
 
-numeric_map = (
-    ("one", "1"), ("two", "2"), ("three", "3"),
-    ("four", "4"), ("five", "5"), ("six", "6"),
-    ("seven", "7"), ("eight", "8"), ("nine", "9")
-)
+numeric_map = [("one", "1"), ("two", "2"), ("three", "3"), ("four", "4"),
+               ("five", "5"), ("six", "6"), ("seven", "7"), ("eight", "8"),
+               ("nine", "9")]
 
 
 # this is probably overly complex!

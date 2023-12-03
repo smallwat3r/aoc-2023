@@ -1,6 +1,5 @@
 from solver import solver
 
-
 with open("test.txt") as f:
     data = f.readlines()
 

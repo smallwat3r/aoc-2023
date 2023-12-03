@@ -2,7 +2,6 @@
 
 from enum import Enum, IntEnum, auto
 
-
 with open("input.txt") as f:
     data = f.readlines()
 
@@ -28,15 +27,14 @@ class Direction(IntEnum):
 
 
 # this is very ugly, but hey, it works!
-def search(data: list[str], index_data: int,
-           line: str, index_line: int,
-           pair: list[str], position: Position) -> list[str]:
+def search(data: list[str],
+           index_data: int,
+           line: str,
+           index_line: int,
+           pair: list[str],
+           position: Position) -> list[str]:
 
-    operators = {
-        Position.ABOVE: 1,
-        Position.CURRENT: 0,
-        Position.BELOW: -1
-    }
+    operators = {Position.ABOVE: 1, Position.CURRENT: 0, Position.BELOW: -1}
     operator = operators[position]
 
     directions = (Direction.LEFT, Direction.CURRENT, Direction.RIGHT)
@@ -88,18 +86,27 @@ def solver(data: list[str]) -> int:
             pair = []
             # above
             if data_index > 0:
-                pair = search(data, data_index,
-                              line, line_index,
-                              pair, Position.ABOVE)
+                pair = search(data,
+                              data_index,
+                              line,
+                              line_index,
+                              pair,
+                              Position.ABOVE)
             # current
-            pair = search(data, data_index,
-                          line, line_index,
-                          pair, Position.CURRENT)
+            pair = search(data,
+                          data_index,
+                          line,
+                          line_index,
+                          pair,
+                          Position.CURRENT)
             # below
             if data_index < len(data) - 1:
-                pair = search(data, data_index,
-                              line, line_index,
-                              pair, Position.BELOW)
+                pair = search(data,
+                              data_index,
+                              line,
+                              line_index,
+                              pair,
+                              Position.BELOW)
             assert len(pair) <= 2
             if len(pair) == 2:
                 total += pair[0] * pair[1]

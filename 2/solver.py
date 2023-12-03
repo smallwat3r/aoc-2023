@@ -4,7 +4,6 @@ import operator
 from functools import reduce
 from typing import TypedDict, ValuesView
 
-
 with open("input.txt") as f:
     data = f.readlines()
 
